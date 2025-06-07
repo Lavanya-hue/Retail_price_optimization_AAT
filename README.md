@@ -1,8 +1,8 @@
-# 🛒 Retail Price Optimization using MLOps
+# Retail Price Optimization using MLOps
 
 This project predicts the total retail price of a product using machine learning and MLOps principles. It integrates model training, experiment tracking, Docker containerization, CI/CD, and deployment.
 
-## 🚀 Features
+## Features
 
 - Regression model for price prediction
 - MLflow for experiment tracking
@@ -11,11 +11,11 @@ This project predicts the total retail price of a product using machine learning
 - CI/CD pipeline via GitHub Actions
 - Deployed on Render
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 Python · Scikit-learn · MLflow · Docker · Flask · GitHub Actions · Render
 
-## 🧪 Quick Start
+## Quick Start
 
 ```bash
 git clone https://github.com/yourusername/retail-price-optimization-mlops.git
@@ -23,7 +23,7 @@ cd retail-price-optimization-mlops
 pip install -r requirements.txt
 cd app && python app.py
 
-✅ CI/CD
+## CI/CD
 GitHub Actions pipeline:
 
 Link and test code
