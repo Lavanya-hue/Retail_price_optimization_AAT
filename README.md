@@ -11,9 +11,19 @@ This project predicts the total retail price of a product using machine learning
 - CI/CD pipeline via GitHub Actions
 - Deployed on Render
 
-## Tech Stack
+## Tools & Technologies:
+ML Libraries: Scikit-learn, Pandas, NumPy, Matplotlib
 
-Python · Scikit-learn · MLflow · Docker · Flask · GitHub Actions · Render
+MLOps Stack: MLflow (experiment tracking), Docker (containerization), GitHub Actions (CI/CD pipeline), Render (cloud deployment)
+
+Backend/API: Flask
+
+Version Control & CI/CD: Git, GitHub
+
+Containerization: Docker with environment reproducibility and dependency isolation
+
+Deployment: Render Web Service with integrated deployment hooks
+
 
 ## Quick Start
 
