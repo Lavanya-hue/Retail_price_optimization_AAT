@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/lavya/Downloads/retail-price-optimization/mlruns/0/e50a655470e54df7ad1b787d051f6907/artifacts
+end_time: 1749756140452
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e50a655470e54df7ad1b787d051f6907
+run_name: redolent-jay-183
+run_uuid: e50a655470e54df7ad1b787d051f6907
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1749756135659
+status: 3
+tags: []
+user_id: lavya

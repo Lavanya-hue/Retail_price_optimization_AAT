@@ -1,60 +1,131 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Retail Price Optimization</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Welcome to Retail Price Optimization!</h1>
-    <p>This is your app homepage.</p>
+    <div class="container">
+        <h1>Retail Price Optimization</h1>
+        <h2>Predict Total Price</h2>
 
-    <h2>Predict Total Price</h2>
-    <form id="predict-form">
-        <label for="unit_price">Unit Price:</label>
-        <input type="number" id="unit_price" name="unit_price" step="any" required><br><br>
+        <form id="predict-form">
+            <div class="form-group">
+                <label for="unit_price">
+                    Unit Price
+                    <span class="tooltip">🛈 Base selling price. Example: 120.5</span>
+                </label>
+                <input type="number" id="unit_price" name="unit_price" step="any" required>
+            </div>
 
-        <label for="freight_price">Freight Price:</label>
-        <input type="number" id="freight_price" name="freight_price" step="any" required><br><br>
+            <div class="form-group">
+                <label for="freight_price">
+                    Freight Price
+                    <span class="tooltip">🛈 Shipping cost. Example: 10.0</span>
+                </label>
+                <input type="number" id="freight_price" name="freight_price" step="any" required>
+            </div>
 
-        <label for="lag_price">Lag Price:</label>
-        <input type="number" id="lag_price" name="lag_price" step="any" required><br><br>
+            <div class="form-group">
+                <label for="lag_price">
+                    Previous Price (Lag)
+                    <span class="tooltip">🛈 Last month’s price. Example: 125.0</span>
+                </label>
+                <input type="number" id="lag_price" name="lag_price" step="any" required>
+            </div>
 
-        <label for="comp_1">Comp 1:</label>
-        <input type="number" id="comp_1" name="comp_1" step="any" required><br><br>
+            <!-- Competitor 1 -->
+            <h3 class="competitor-heading">🏷️ Competitor 1</h3>
+            <div class="form-group">
+                <label for="comp_1">
+                    Price <span class="tooltip">🛈 Price. Example: 118.0</span>
+                </label>
+                <input type="number" id="comp_1" name="comp_1" step="any" required>
+            </div>
+            <div class="form-group">
+                <label for="ps1">
+                    Product Score <span class="tooltip">🛈 Rating (1–5). Example: 4.2</span>
+                </label>
+                <input type="number" id="ps1" name="ps1" step="any" required>
+            </div>
+            <div class="form-group">
+                <label for="fp1">
+                    Freight Price <span class="tooltip">🛈 Shipping. Example: 12.0</span>
+                </label>
+                <input type="number" id="fp1" name="fp1" step="any" required>
+            </div>
 
-        <label for="ps1">PS1:</label>
-        <input type="number" id="ps1" name="ps1" step="any" required><br><br>
+            <!-- Competitor 2 -->
+            <h3 class="competitor-heading">🏷️ Competitor 2</h3>
+            <div class="form-group">
+                <label for="comp_2">
+                    Price <span class="tooltip">🛈 Price. Example: 117.5</span>
+                </label>
+                <input type="number" id="comp_2" name="comp_2" step="any" required>
+            </div>
+            <div class="form-group">
+                <label for="ps2">
+                    Product Score <span class="tooltip">🛈 Rating. Example: 4.0</span>
+                </label>
+                <input type="number" id="ps2" name="ps2" step="any" required>
+            </div>
+            <div class="form-group">
+                <label for="fp2">
+                    Freight Price <span class="tooltip">🛈 Shipping. Example: 11.5</span>
+                </label>
+                <input type="number" id="fp2" name="fp2" step="any" required>
+            </div>
 
-        <label for="fp1">FP1:</label>
-        <input type="number" id="fp1" name="fp1" step="any" required><br><br>
+            <!-- Competitor 3 -->
+            <h3 class="competitor-heading">🏷️ Competitor 3</h3>
+            <div class="form-group">
+                <label for="comp_3">
+                    Price <span class="tooltip">🛈 Price. Example: 119.0</span>
+                </label>
+                <input type="number" id="comp_3" name="comp_3" step="any" required>
+            </div>
+            <div class="form-group">
+                <label for="ps3">
+                    Product Score <span class="tooltip">🛈 Rating. Example: 4.4</span>
+                </label>
+                <input type="number" id="ps3" name="ps3" step="any" required>
+            </div>
+            <div class="form-group">
+                <label for="fp3">
+                    Freight Price <span class="tooltip">🛈 Shipping. Example: 13.0</span>
+                </label>
+                <input type="number" id="fp3" name="fp3" step="any" required>
+            </div>
 
-        <label for="comp_2">Comp 2:</label>
-        <input type="number" id="comp_2" name="comp_2" step="any" required><br><br>
+            <button type="submit">✨ Predict ✨</button>
+        </form>
 
-        <label for="ps2">PS2:</label>
-        <input type="number" id="ps2" name="ps2" step="any" required><br><br>
+        <h3 id="result"></h3>
 
-        <label for="fp2">FP2:</label>
-        <input type="number" id="fp2" name="fp2" step="any" required><br><br>
+        <div class="explanation">
+            <h3>🔍 Feature Importance</h3>
+            <ul>
+                <li><strong>Unit Price</strong> – Main cost of product</li>
+                <li><strong>Freight Price</strong> – Additional logistics cost</li>
+                <li><strong>Lag Price</strong> – Past price for trend</li>
+                <li><strong>Competitor Prices</strong> – Market position</li>
+                <li><strong>Product Scores</strong> – Reflect product quality</li>
+            </ul>
+        </div>
 
-        <label for="comp_3">Comp 3:</label>
-        <input type="number" id="comp_3" name="comp_3" step="any" required><br><br>
-
-        <label for="ps3">PS3:</label>
-        <input type="number" id="ps3" name="ps3" step="any" required><br><br>
-
-        <label for="fp3">FP3:</label>
-        <input type="number" id="fp3" name="fp3" step="any" required><br><br>
-
-        <button type="submit">Predict</button>
-    </form>
-
-    <h3 id="result"></h3>
+        <div class="explanation">
+            <h3>📘 Understanding the Prediction</h3>
+            <p>The total price is calculated by combining your <strong>unit price</strong>, <strong>freight charges</strong>, and comparing them with historical trends and competitor data.</p>
+            <p>A lower competitor price or higher previous price can adjust the prediction. The model ensures price is profitable yet competitive.</p>
+        </div>
+    </div>
 
     <script>
         const form = document.getElementById('predict-form');
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-
             const features = {
                 unit_price: parseFloat(document.getElementById('unit_price').value),
                 freight_price: parseFloat(document.getElementById('freight_price').value),
@@ -77,14 +148,12 @@
                     body: JSON.stringify(features)
                 });
 
-                if (!response.ok) {
-                    throw new Error(`Server error: ${response.status}`);
-                }
+                if (!response.ok) throw new Error(`Server error: ${response.status}`);
 
                 const data = await response.json();
-                document.getElementById('result').innerText = `Predicted Total Price: ${data.predicted_total_price}`;
+                document.getElementById('result').innerText = `💰 Predicted Total Price: ₹${data.predicted_total_price}`;
             } catch (error) {
-                document.getElementById('result').innerText = `Error: ${error.message}`;
+                document.getElementById('result').innerText = `❌ Error: ${error.message}`;
             }
         });
     </script>
