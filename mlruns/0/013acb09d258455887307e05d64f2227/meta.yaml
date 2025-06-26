@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/lavya/Downloads/retail-price-optimization/mlruns/0/013acb09d258455887307e05d64f2227/artifacts
+end_time: 1750957524048
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 013acb09d258455887307e05d64f2227
+run_name: gifted-ape-33
+run_uuid: 013acb09d258455887307e05d64f2227
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750957518065
+status: 3
+tags: []
+user_id: lavya
